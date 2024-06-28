@@ -2,6 +2,7 @@
 CREATE TABLE users (
     id int(6) PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL
 );
@@ -35,11 +36,11 @@ CREATE TABLE payment_methods (
 
 CREATE TABLE orders (
     id int(6) PRIMARY KEY AUTO_INCREMENT,
-    user_id int(6) NOT NULL,
+    user_id int(6),
     event_id int(6) NOT NULL,
     quantity int(6) NOT NULL,
     total_price int(6) NOT NULL,
-    payment_method int(6) NOT NULL,
+    payment_method int(6),
     payment_status enum(
         'PENDING',
         'PAID',
